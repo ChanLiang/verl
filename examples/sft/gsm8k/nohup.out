@@ -1,0 +1,205 @@
++ date=407
++ MODEL_NAME=Qwen2.5-0.5B-Instruct
++ EPOCHS=2
++ BS=256
++ LR=1e-4
++ save_freq=30
++ test_freq=10
++ RUN_NAME=407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2
++ PROJECT_NAME=sft_gsm8k_Qwen2.5-0.5B-Instruct
++ LOG_FILE=407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2.log
++ model_path=/mnt/teamdrive/projects/backup_chenlian/cache/Qwen2.5-0.5B-Instruct
++ MODEL_SAVE_DIR=/mnt/teamdrive/projects/backup_chenlian/rl/sft_gsm8k_Qwen2.5-0.5B-Instruct/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2
++ mkdir -p /mnt/teamdrive/projects/backup_chenlian/rl/sft_gsm8k_Qwen2.5-0.5B-Instruct/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2
++ export WANDB_API_KEY=346ac63bfef1ebae6bb5d71512417bcb81102dfd
++ WANDB_API_KEY=346ac63bfef1ebae6bb5d71512417bcb81102dfd
++ export CUDA_VISIBLE_DEVICES=2
++ CUDA_VISIBLE_DEVICES=2
++ tee log/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2.log
++ torchrun --standalone --nnodes=1 --nproc_per_node=1 -m verl.trainer.fsdp_sft_trainer data.train_files=/home/aiscuser/data/gsm8k/train.parquet data.val_files=/home/aiscuser/data/gsm8k/test.parquet data.prompt_key=extra_info data.response_key=extra_info optim.lr=1e-4 '+data.prompt_dict_keys=[question]' '+data.response_dict_keys=[answer]' model.partial_pretrain=/mnt/teamdrive/projects/backup_chenlian/cache/Qwen2.5-0.5B-Instruct trainer.default_local_dir=/mnt/teamdrive/projects/backup_chenlian/rl/sft_gsm8k_Qwen2.5-0.5B-Instruct/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2 trainer.project_name=sft_gsm8k_Qwen2.5-0.5B-Instruct trainer.experiment_name=407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2 trainer.total_epochs=2 trainer.save_freq=30 trainer.test_freq=10 'trainer.logger=[console,wandb]' trainer.default_hdfs_dir=null
+INFO 04-07 06:28:44 [__init__.py:239] Automatically detected platform cuda.
+Could not override 'trainer.save_freq'.
+To append to your config use +trainer.save_freq=30
+Key 'save_freq' is not in struct
+    full_key: trainer.save_freq
+    object_type=dict
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+E0407 06:28:48.753393 407431 site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 407525) of binary: /home/aiscuser/.conda/envs/verl/bin/python
+Traceback (most recent call last):
+  File "/home/aiscuser/.conda/envs/verl/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+verl.trainer.fsdp_sft_trainer FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-07_06:28:48
+  host      : node-0
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 407525)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
++ date=407
++ MODEL_NAME=Qwen2.5-0.5B-Instruct
++ EPOCHS=2
++ BS=256
++ LR=1e-4
++ RUN_NAME=407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2
++ PROJECT_NAME=sft_gsm8k_Qwen2.5-0.5B-Instruct
++ LOG_FILE=407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2.log
++ model_path=/mnt/teamdrive/projects/backup_chenlian/cache/Qwen2.5-0.5B-Instruct
++ MODEL_SAVE_DIR=/mnt/teamdrive/projects/backup_chenlian/rl/sft_gsm8k_Qwen2.5-0.5B-Instruct/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2
++ mkdir -p /mnt/teamdrive/projects/backup_chenlian/rl/sft_gsm8k_Qwen2.5-0.5B-Instruct/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2
++ export WANDB_API_KEY=346ac63bfef1ebae6bb5d71512417bcb81102dfd
++ WANDB_API_KEY=346ac63bfef1ebae6bb5d71512417bcb81102dfd
++ export CUDA_VISIBLE_DEVICES=2
++ CUDA_VISIBLE_DEVICES=2
++ tee log/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2.log
++ torchrun --standalone --nnodes=1 --nproc_per_node=1 -m verl.trainer.fsdp_sft_trainer data.train_files=/home/aiscuser/data/gsm8k/train.parquet data.val_files=/home/aiscuser/data/gsm8k/test.parquet data.prompt_key=extra_info data.response_key=extra_info optim.lr=1e-4 '+data.prompt_dict_keys=[question]' '+data.response_dict_keys=[answer]' model.partial_pretrain=/mnt/teamdrive/projects/backup_chenlian/cache/Qwen2.5-0.5B-Instruct trainer.default_local_dir=/mnt/teamdrive/projects/backup_chenlian/rl/sft_gsm8k_Qwen2.5-0.5B-Instruct/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2 trainer.project_name=sft_gsm8k_Qwen2.5-0.5B-Instruct trainer.experiment_name=407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2 trainer.total_epochs=2 'trainer.logger=[console,wandb]' trainer.default_hdfs_dir=null
+INFO 04-07 06:32:09 [__init__.py:239] Automatically detected platform cuda.
+[W407 06:32:13.740132101 Utils.hpp:136] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())
+Normalize batch size by dp 1
+Using sequence parallel size: 1
+Using remove padding: False
+/home/aiscuser/env/verl/verl/utils/dataset/sft_dataset.py:81: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  ls = ls[0]
+/home/aiscuser/env/verl/verl/utils/dataset/sft_dataset.py:81: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  ls = ls[0]
+/home/aiscuser/env/verl/verl/utils/dataset/sft_dataset.py:81: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  ls = ls[0]
+/home/aiscuser/env/verl/verl/utils/dataset/sft_dataset.py:81: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  ls = ls[0]
+Using FSDP rank 0 and size 1 for data distribution
+Flash Attention 2.0 only supports torch.float16 and torch.bfloat16 dtypes, but the current dype in Qwen2ForCausalLM is torch.float32. You should run training or inference using Automatic Mixed-Precision via the `with torch.autocast(device_type='torch_device'):` decorator, or load the model with the `torch_dtype` argument. Example: `model = AutoModel.from_pretrained("openai/whisper-tiny", attn_implementation="flash_attention_2", torch_dtype=torch.float16)`
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+functools.partial(<function _or_policy at 0x7f20a849ed40>, policies=[functools.partial(<function transformer_auto_wrap_policy at 0x7f20a849ec20>, transformer_layer_cls={<class 'transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer'>})])
+/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/fsdp/_init_utils.py:444: UserWarning: FSDP is switching to use `NO_SHARD` instead of ShardingStrategy.FULL_SHARD since the world size is 1.
+  warnings.warn(
+NCCL version 2.21.5+cuda12.4
+
+node-0:409208:409601 [0] ibvwrap.c:66 NCCL WARN Call to ibv_open_device failed
+
+node-0:409208:409601 [0] p2p_plugin.c:233 NCCL WARN NET/IB : Unable to open device mlx5_0
+
+node-0:409208:409601 [0] misc/ibvwrap.cc:113 NCCL WARN Call to ibv_open_device failed
+
+node-0:409208:409601 [0] transport/net_ib.cc:426 NCCL WARN NET/IB : Unable to open device mlx5_0
+Number of steps/epoch 29, number of epochs 2, total number of steps 58
+{'data': {'train_batch_size': 256, 'micro_batch_size': None, 'micro_batch_size_per_gpu': 4, 'train_files': '/home/aiscuser/data/gsm8k/train.parquet', 'val_files': '/home/aiscuser/data/gsm8k/test.parquet', 'prompt_key': 'extra_info', 'response_key': 'extra_info', 'multiturn': {'enable': False, 'messages_key': 'messages'}, 'max_length': 1024, 'truncation': 'error', 'balance_dp_token': False, 'chat_template': None, 'custom_cls': {'path': None, 'name': None}, 'prompt_dict_keys': ['question'], 'response_dict_keys': ['answer']}, 'model': {'partial_pretrain': '/mnt/teamdrive/projects/backup_chenlian/cache/Qwen2.5-0.5B-Instruct', 'fsdp_config': {'wrap_policy': {'min_num_params': 0}, 'cpu_offload': False, 'offload_params': False}, 'external_lib': None, 'enable_gradient_checkpointing': False, 'trust_remote_code': False, 'lora_rank': 0, 'lora_alpha': 16, 'target_modules': 'all-linear', 'use_liger': False}, 'optim': {'lr': 0.0001, 'betas': [0.9, 0.95], 'weight_decay': 0.01, 'warmup_steps_ratio': 0.1, 'clip_grad': 1.0}, 'ulysses_sequence_parallel_size': 1, 'use_remove_padding': False, 'trainer': {'default_local_dir': '/mnt/teamdrive/projects/backup_chenlian/rl/sft_gsm8k_Qwen2.5-0.5B-Instruct/407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2', 'default_hdfs_dir': None, 'resume_path': None, 'project_name': 'sft_gsm8k_Qwen2.5-0.5B-Instruct', 'experiment_name': '407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2', 'total_epochs': 2, 'total_training_steps': None, 'logger': ['console', 'wandb'], 'seed': 1}}
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: chanliang (foreverai) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /home/aiscuser/verl/examples/sft/gsm8k/wandb/run-20250407_063218-7256857267.45128-dabc6b54-119d-4f73-bc70-63eae3dc2e7e
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run 407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2
+wandb: ⭐️ View project at https://wandb.ai/foreverai/sft_gsm8k_Qwen2.5-0.5B-Instruct
+wandb: 🚀 View run at https://wandb.ai/foreverai/sft_gsm8k_Qwen2.5-0.5B-Instruct/runs/7256857267.45128-dabc6b54-119d-4f73-bc70-63eae3dc2e7e
+Using LocalLogger is deprecated. The constructor API will change 
+Total training steps: 58
+Epoch 1/2:   0%|                                                                                                                                     | 0/29 [00:00<?, ?it/s]step:1 - train/loss:0.808 - train/lr(1e-3):0.020
+Epoch 1/2:   3%|████▎                                                                                                                        | 1/29 [00:18<08:38, 18.52s/it]step:2 - train/loss:0.782 - train/lr(1e-3):0.040
+Epoch 1/2:   7%|████████▌                                                                                                                    | 2/29 [00:34<07:46, 17.27s/it]step:3 - train/loss:0.518 - train/lr(1e-3):0.060
+Epoch 1/2:  10%|████████████▉                                                                                                                | 3/29 [00:51<07:16, 16.79s/it]step:4 - train/loss:0.687 - train/lr(1e-3):0.080
+Epoch 1/2:  14%|█████████████████▏                                                                                                           | 4/29 [01:07<06:53, 16.55s/it]step:5 - train/loss:0.854 - train/lr(1e-3):0.100
+Epoch 1/2:  17%|█████████████████████▌                                                                                                       | 5/29 [01:23<06:36, 16.50s/it]step:6 - train/loss:1.016 - train/lr(1e-3):0.100
+Epoch 1/2:  21%|█████████████████████████▊                                                                                                   | 6/29 [01:40<06:18, 16.44s/it]step:7 - train/loss:0.879 - train/lr(1e-3):0.100
+Epoch 1/2:  24%|██████████████████████████████▏                                                                                              | 7/29 [01:56<06:00, 16.37s/it]step:8 - train/loss:0.810 - train/lr(1e-3):0.099
+Epoch 1/2:  28%|██████████████████████████████████▍                                                                                          | 8/29 [02:12<05:42, 16.30s/it]step:9 - train/loss:1.450 - train/lr(1e-3):0.099
+Epoch 1/2:  31%|██████████████████████████████████████▊                                                                                      | 9/29 [02:28<05:26, 16.33s/it]step:10 - train/loss:1.127 - train/lr(1e-3):0.098
+Epoch 1/2:  34%|██████████████████████████████████████████▊                                                                                 | 10/29 [02:45<05:13, 16.50s/it]step:11 - train/loss:1.159 - train/lr(1e-3):0.097
+Epoch 1/2:  38%|███████████████████████████████████████████████                                                                             | 11/29 [03:02<04:56, 16.45s/it]step:12 - train/loss:0.824 - train/lr(1e-3):0.096
+Epoch 1/2:  41%|███████████████████████████████████████████████████▎                                                                        | 12/29 [03:18<04:39, 16.42s/it]step:13 - train/loss:0.876 - train/lr(1e-3):0.094
+Epoch 1/2:  45%|███████████████████████████████████████████████████████▌                                                                    | 13/29 [03:34<04:21, 16.37s/it]step:14 - train/loss:0.668 - train/lr(1e-3):0.093
+Epoch 1/2:  48%|███████████████████████████████████████████████████████████▊                                                                | 14/29 [03:50<04:04, 16.33s/it]step:15 - train/loss:0.668 - train/lr(1e-3):0.091
+Epoch 1/2:  52%|████████████████████████████████████████████████████████████████▏                                                           | 15/29 [04:07<03:48, 16.31s/it]step:16 - train/loss:0.605 - train/lr(1e-3):0.090
+Epoch 1/2:  55%|████████████████████████████████████████████████████████████████████▍                                                       | 16/29 [04:23<03:32, 16.33s/it]step:17 - train/loss:0.582 - train/lr(1e-3):0.088
+Epoch 1/2:  59%|████████████████████████████████████████████████████████████████████████▋                                                   | 17/29 [04:40<03:16, 16.38s/it]step:18 - train/loss:0.557 - train/lr(1e-3):0.086
+Epoch 1/2:  62%|████████████████████████████████████████████████████████████████████████████▉                                               | 18/29 [04:56<03:00, 16.41s/it]step:19 - train/loss:0.559 - train/lr(1e-3):0.084
+Epoch 1/2:  66%|█████████████████████████████████████████████████████████████████████████████████▏                                          | 19/29 [05:12<02:44, 16.42s/it]step:20 - train/loss:0.534 - train/lr(1e-3):0.082
+Epoch 1/2:  69%|█████████████████████████████████████████████████████████████████████████████████████▌                                      | 20/29 [05:29<02:27, 16.41s/it]step:21 - train/loss:0.507 - train/lr(1e-3):0.079
+Epoch 1/2:  72%|█████████████████████████████████████████████████████████████████████████████████████████▊                                  | 21/29 [05:45<02:10, 16.37s/it]step:22 - train/loss:0.549 - train/lr(1e-3):0.077
+Epoch 1/2:  76%|██████████████████████████████████████████████████████████████████████████████████████████████                              | 22/29 [06:02<01:54, 16.42s/it]step:23 - train/loss:0.529 - train/lr(1e-3):0.074
+Epoch 1/2:  79%|██████████████████████████████████████████████████████████████████████████████████████████████████▎                         | 23/29 [06:18<01:38, 16.38s/it]step:24 - train/loss:0.500 - train/lr(1e-3):0.072
+Epoch 1/2:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████▌                     | 24/29 [06:34<01:21, 16.34s/it]step:25 - train/loss:0.501 - train/lr(1e-3):0.069
+Epoch 1/2:  86%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▉                 | 25/29 [06:50<01:05, 16.33s/it]step:26 - train/loss:0.482 - train/lr(1e-3):0.066
+Epoch 1/2:  90%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████▏            | 26/29 [07:07<00:48, 16.32s/it]step:27 - train/loss:0.504 - train/lr(1e-3):0.063
+Epoch 1/2:  93%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍        | 27/29 [07:23<00:32, 16.31s/it]step:28 - train/loss:0.491 - train/lr(1e-3):0.060
+Epoch 1/2:  97%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋    | 28/29 [07:39<00:16, 16.32s/it]step:29 - train/loss:0.470 - train/lr(1e-3):0.057
+Epoch 1/2: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 29/29 [07:56<00:00, 16.36s/it]Epoch 1/2: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 29/29 [07:56<00:00, 16.43s/it]
+step:29 - val/loss:0.507
+/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/fsdp/_state_dict_utils.py:773: UserWarning: When using ``NO_SHARD`` for ``ShardingStrategy``, full_state_dict willbe returned.
+  warnings.warn(
+/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/fsdp/_state_dict_utils.py:711: UserWarning: When using ``NO_SHARD`` for ``ShardingStrategy``, full_state_dict willbe returned.
+  warnings.warn(
+Epoch 2/2:   0%|                                                                                                                                     | 0/29 [00:00<?, ?it/s]step:30 - train/loss:0.392 - train/lr(1e-3):0.054
+Epoch 2/2:   3%|████▎                                                                                                                        | 1/29 [00:17<07:59, 17.12s/it]step:31 - train/loss:0.387 - train/lr(1e-3):0.051
+Epoch 2/2:   7%|████████▌                                                                                                                    | 2/29 [00:33<07:29, 16.66s/it]step:32 - train/loss:0.381 - train/lr(1e-3):0.049
+Epoch 2/2:  10%|████████████▉                                                                                                                | 3/29 [00:49<07:08, 16.48s/it]step:33 - train/loss:0.362 - train/lr(1e-3):0.046
+Epoch 2/2:  14%|█████████████████▏                                                                                                           | 4/29 [01:06<06:54, 16.58s/it]step:34 - train/loss:0.371 - train/lr(1e-3):0.043
+Epoch 2/2:  17%|█████████████████████▌                                                                                                       | 5/29 [01:22<06:35, 16.49s/it]step:35 - train/loss:0.366 - train/lr(1e-3):0.040
+Epoch 2/2:  21%|█████████████████████████▊                                                                                                   | 6/29 [01:39<06:18, 16.44s/it]step:36 - train/loss:0.364 - train/lr(1e-3):0.037
+Epoch 2/2:  24%|██████████████████████████████▏                                                                                              | 7/29 [01:55<06:00, 16.37s/it]step:37 - train/loss:0.350 - train/lr(1e-3):0.034
+Epoch 2/2:  28%|██████████████████████████████████▍                                                                                          | 8/29 [02:11<05:41, 16.28s/it]step:38 - train/loss:0.374 - train/lr(1e-3):0.031
+Epoch 2/2:  31%|██████████████████████████████████████▊                                                                                      | 9/29 [02:27<05:24, 16.22s/it]step:39 - train/loss:0.345 - train/lr(1e-3):0.028
+Epoch 2/2:  34%|██████████████████████████████████████████▊                                                                                 | 10/29 [02:43<05:08, 16.22s/it]step:40 - train/loss:0.374 - train/lr(1e-3):0.026
+Epoch 2/2:  38%|███████████████████████████████████████████████                                                                             | 11/29 [03:00<04:52, 16.23s/it]step:41 - train/loss:0.372 - train/lr(1e-3):0.023
+Epoch 2/2:  41%|███████████████████████████████████████████████████▎                                                                        | 12/29 [03:16<04:36, 16.25s/it]step:42 - train/loss:0.341 - train/lr(1e-3):0.021
+Epoch 2/2:  45%|███████████████████████████████████████████████████████▌                                                                    | 13/29 [03:32<04:20, 16.27s/it]step:43 - train/loss:0.358 - train/lr(1e-3):0.018
+Epoch 2/2:  48%|███████████████████████████████████████████████████████████▊                                                                | 14/29 [03:48<04:04, 16.29s/it]step:44 - train/loss:0.354 - train/lr(1e-3):0.016
+Epoch 2/2:  52%|████████████████████████████████████████████████████████████████▏                                                           | 15/29 [04:05<03:48, 16.29s/it]step:45 - train/loss:0.380 - train/lr(1e-3):0.014
+Epoch 2/2:  55%|████████████████████████████████████████████████████████████████████▍                                                       | 16/29 [04:21<03:32, 16.37s/it]step:46 - train/loss:0.353 - train/lr(1e-3):0.012
+Epoch 2/2:  59%|████████████████████████████████████████████████████████████████████████▋                                                   | 17/29 [04:38<03:16, 16.35s/it]step:47 - train/loss:0.350 - train/lr(1e-3):0.010
+Epoch 2/2:  62%|████████████████████████████████████████████████████████████████████████████▉                                               | 18/29 [04:54<02:59, 16.31s/it]step:48 - train/loss:0.370 - train/lr(1e-3):0.009
+Epoch 2/2:  66%|█████████████████████████████████████████████████████████████████████████████████▏                                          | 19/29 [05:10<02:42, 16.27s/it]step:49 - train/loss:0.337 - train/lr(1e-3):0.007
+Epoch 2/2:  69%|█████████████████████████████████████████████████████████████████████████████████████▌                                      | 20/29 [05:26<02:26, 16.24s/it]step:50 - train/loss:0.369 - train/lr(1e-3):0.006
+Epoch 2/2:  72%|█████████████████████████████████████████████████████████████████████████████████████████▊                                  | 21/29 [05:43<02:10, 16.28s/it]step:51 - train/loss:0.365 - train/lr(1e-3):0.004
+Epoch 2/2:  76%|██████████████████████████████████████████████████████████████████████████████████████████████                              | 22/29 [05:59<01:53, 16.28s/it]step:52 - train/loss:0.354 - train/lr(1e-3):0.003
+Epoch 2/2:  79%|██████████████████████████████████████████████████████████████████████████████████████████████████▎                         | 23/29 [06:15<01:37, 16.24s/it]step:53 - train/loss:0.340 - train/lr(1e-3):0.002
+Epoch 2/2:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████▌                     | 24/29 [06:31<01:21, 16.21s/it]step:54 - train/loss:0.360 - train/lr(1e-3):0.001
+Epoch 2/2:  86%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▉                 | 25/29 [06:47<01:04, 16.22s/it]step:55 - train/loss:0.353 - train/lr(1e-3):0.001
+Epoch 2/2:  90%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████▏            | 26/29 [07:03<00:48, 16.19s/it]step:56 - train/loss:0.352 - train/lr(1e-3):0.000
+Epoch 2/2:  93%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍        | 27/29 [07:20<00:32, 16.17s/it]step:57 - train/loss:0.347 - train/lr(1e-3):0.000
+Epoch 2/2:  97%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋    | 28/29 [07:36<00:16, 16.26s/it]step:58 - train/loss:0.384 - train/lr(1e-3):0.000
+step:58 - val/loss:0.481
+/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/fsdp/_state_dict_utils.py:773: UserWarning: When using ``NO_SHARD`` for ``ShardingStrategy``, full_state_dict willbe returned.
+  warnings.warn(
+/home/aiscuser/.conda/envs/verl/lib/python3.10/site-packages/torch/distributed/fsdp/_state_dict_utils.py:711: UserWarning: When using ``NO_SHARD`` for ``ShardingStrategy``, full_state_dict willbe returned.
+  warnings.warn(
+Epoch 2/2:  97%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋    | 28/29 [08:39<00:18, 18.54s/it]
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:     train/loss ▅▃▅▇▅██▅▆▄▃▃▃▃▃▃▃▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: train/lr(1e-3) ▂▅████████▇▇▇▇▇▆▆▆▆▅▄▄▄▄▄▃▃▃▃▂▂▂▂▂▁▁▁▁▁▁
+wandb:       val/loss █▁
+wandb: 
+wandb: Run summary:
+wandb:     train/loss 0.38447
+wandb: train/lr(1e-3) 0
+wandb:       val/loss 0.48123
+wandb: 
+wandb: 🚀 View run 407_sft_gsm8k_Qwen2.5-0.5B-Instruct_bs256_lr1e-4_ep2 at: https://wandb.ai/foreverai/sft_gsm8k_Qwen2.5-0.5B-Instruct/runs/7256857267.45128-dabc6b54-119d-4f73-bc70-63eae3dc2e7e
+wandb: ⭐️ View project at: https://wandb.ai/foreverai/sft_gsm8k_Qwen2.5-0.5B-Instruct
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250407_063218-7256857267.45128-dabc6b54-119d-4f73-bc70-63eae3dc2e7e/logs
+[rank0]:[W407 06:49:41.918553220 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
